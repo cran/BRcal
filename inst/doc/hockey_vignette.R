@@ -35,7 +35,7 @@ library(gridExtra)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  # Install via tarball
-#  install.packages("path_to_file\BRcal_0.0.0.9000.tar.gz", repos = NULL, type="source")
+#  install.packages("path_to_file\BRcal_1.0.0.tar.gz", repos = NULL, type="source")
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  # Install via CRAN
@@ -264,28 +264,35 @@ summary(lp$df)
 nrow(lp$df)
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df)
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8))
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df, ggpoint_options=list(size=3, shape=1))
+lineplot(df=lp$df, t_levels=c(0.95))
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df, ggline_options=list(linewidth=2, alpha=0.1))
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), plot_original=FALSE)
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df) + scale_color_manual(values = c("orchid", "darkgreen"))
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), ggpoint_options=list(size=3, shape=1))
+
+## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), ggline_options=list(linewidth=2, alpha=0.1))
+
+## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8)) + 
+  scale_color_manual(values = c("orchid", "darkgreen"))
 
 ## ----fig.width=10, fig.height=4, fig.align='center'---------------------------
-lp1 <- lineplot(df=lp$df, thin_to=500)
-lp2 <- lineplot(df=lp$df, thin_percent=0.5)
-lp3 <- lineplot(df=lp$df, thin_by=2)
+lp1 <- lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), thin_to=500)
+lp2 <- lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), thin_prop=0.5)
+lp3 <- lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), thin_by=2)
 gridExtra::grid.arrange(lp1, lp2, lp3, ncol=3)
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df, thin_to=500, seed = 47)
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), thin_to=500, seed = 47)
 
 ## ----fig.width=6, fig.height=4, fig.align='center'----------------------------
-lineplot(df=lp$df, thin_to=500, seed=NULL)
+lineplot(df=lp$df, t_levels=c(0.95, 0.9, 0.8), thin_to=500, seed=NULL)
 
 ## ----include=FALSE------------------------------------------------------------
 # Reset user options and par
